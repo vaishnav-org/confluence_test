@@ -6,7 +6,7 @@ api_token = os.environ['CONFLUENCE_API_TOKEN']
 base_url = os.environ['CONFLUENCE_BASE_URL']
 
 # Initialize Confluence API client
-confluence = Confluence(url=base_url, username='vaishnavvsri', password=api_token)
+confluence = Confluence(url=base_url, username='vaishnav-vsri', password=api_token)
 
 # Fetch README content from file
 with open('README.md', 'r') as readme_file:
