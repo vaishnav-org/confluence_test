@@ -23,7 +23,7 @@ jobs:
           # The ID of the parent page in Confluence where the Markdown files will be published as child pages.
           confluenceParentId: 491521
           # Your Atlassian account's username, required for authentication when interacting with Confluence.
-          atlassianUserName: Vaishnav sri
+          atlassianUserName: Vaishnav-vsri
           # An API token generated for your Atlassian account, used for authentication when making API calls to Confluence.
           atlassianApiToken: ${{ secrets.CONFLUENCE_API_TOKEN }}
           # The folder you want to apply a default of "connie-publish: true" to.
