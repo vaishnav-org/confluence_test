@@ -1,43 +1,17 @@
-name: Publish README to Confluence
-
-on:
-  push:
-    branches:
-      - main
+name: Publish to Confluence
+on: push
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: markdown-confluence
-        # You may pin to the exact commit or the version.
-        # uses: markdown-confluence/publish-action@7767a0a7f438bb1497ee7ffd7d3d685b81dfe700
-        uses: markdown-confluence/publish-action@v5
+      
+      - name: Publish Markdown to Confluence
+        uses: markdown-confluence/publish@v1
         with:
-          # The base URL of your Confluence instance, used for API calls and publishing content.
-          confluenceBaseUrl: https://vaishnav-vsri.atlassian.net/wiki/x/AYAH
-          # The ID of the parent page in Confluence where the Markdown files will be published as child pages.
+          confluenceBaseUrl: https://vaishnav-vsri.atlassian.net/
           confluenceParentId: 491521
-          # Your Atlassian account's username, required for authentication when interacting with Confluence.
-          atlassianUserName: Vaishnav-vsri
-          # An API token generated for your Atlassian account, used for authentication when making API calls to Confluence.
-          atlassianApiToken: ${{ secrets.CONFLUENCE_API_TOKEN }}
-          # The folder you want to apply a default of "connie-publish: true" to.
-          folderToPublish: docs
-          # The root path for published content on Confluence. This is used to tell the action where to look for Markdown files and content.
-          contentRoot: /docs
-          # A configuration file containing additional settings and customizations for the publishing process.
-          #configFile: # optional
-      #- uses: actions/checkout@v2
-       # with:
-        #  from: './README.md'
-         # to: '491521' # The confluence page id where to write the output
-          #cloud: 'vaishnav-vsri'
-          #user: 'vaishnavsri2@gmail.com'
-          #token: ${{ secrets.CONFLUENCE_API_TOKEN }}
-
-
+          atlassianUserName: ${{ secrets.ATLASSIAN_USERNAME }}
+          atlassianApiToken: ${{ secrets.ATLASSIAN_API_TOKEN }}
