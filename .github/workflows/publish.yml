@@ -14,12 +14,13 @@ jobs:
           ls -lrt
           pwd
 
-    #   - uses: cupcakearmy/confluence-markdown-sync@v1
-    #     with:
-    #       from: './README.md'
-    #       to: '491521' # The confluence page id where to write the output
-    #       cloud: <my-confluence-cloud-id>
-    #       user: <my.user@example.org>
-    #       token: <my-token>
+      - uses: cupcakearmy/confluence-markdown-sync@v1
+        with:
+          from: 'README.md'
+          to: '491521' # The confluence page id where to write the output
+          cloud: vaishnav-vsri
+          user: vaishnavsri2@gmail.com
+          token: ${{ secrets.ATLASSIAN_API_TOKEN}}
                 
+
         
