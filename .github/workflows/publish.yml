@@ -1,25 +1,30 @@
-name: Publish to Confluence
+name: Publish README to Confluence
 
 on:
   push:
     branches:
-      - main  # Replace with your branch name if needed
+      - main
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Publish to Confluence
-      env:
-        CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
-      run: |
-        # Install Confluence CLI
-        curl -L https://github.com/hasalex/confluence-cli/releases/latest/download/confluence-cli-linux-amd64 -o confluence-cli
-        chmod +x confluence-cli
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Replace with the desired Python version
 
-        # Publish README file
-        ./confluence-cli --server 'https://vaishnav-vsri.atlassian.net/wiki/spaces/~62b4ef640c77011bdfde15dd/pages/491521/terraform+check' --user 'vaishnavsri2@gmail.com' --api-token "$CONFLUENCE_API_TOKEN" --action updatePage --title "README" --space "~62b4ef640c77011bdfde15dd" --file ./README.md
+      - name: Install dependencies
+        run: pip install --upgrade pip
+             pip install atlassian-python-api
+
+      - name: Publish to Confluence
+        env:
+          CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
+          CONFLUENCE_BASE_URL: ${{ secrets.CONFLUENCE_BASE_URL }}
+        run: |
+          python publish_readme_to_confluence.py
