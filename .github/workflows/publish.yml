@@ -8,11 +8,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: markdown-confluence
-        uses: markdown-confluence/publish-action@v5
 
-        with:
-          confluenceBaseUrl: https://vaishnav-vsri.atlassian.net/
-          confluenceParentId: 491521
-          atlassianUserName: ${{ secrets.ATLASSIAN_USERNAME }}
-          atlassianApiToken: ${{ secrets.ATLASSIAN_API_TOKEN }}
+      - name: debug
+        run: |
+          ls -lrt
+          pwd
+
+    #   - uses: cupcakearmy/confluence-markdown-sync@v1
+    #     with:
+    #       from: './README.md'
+    #       to: '491521' # The confluence page id where to write the output
+    #       cloud: <my-confluence-cloud-id>
+    #       user: <my.user@example.org>
+    #       token: <my-token>
+                
+        
