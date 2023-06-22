@@ -17,4 +17,4 @@ page_title = 'My README Page'
 space_key = '~62b4ef640c77011bdfde15dd'
 
 page = confluence.create_page(space=space_key, title=page_title, body=readme_content)
-print(f'Successfully published README to Confluence. Page ID: {page["id"]}')
+print(f'Successfully published README to Confluence.')
